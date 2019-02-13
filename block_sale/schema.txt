@@ -1,0 +1,27 @@
+### User
+id: STR
+user_name: STR
+f_name: STR
+l_name: STR
+email: STR
+profile_photo: STR
+balance: FLOAT
+
+
+### Product
+id: STR
+name: STR
+posted_by: STR ( Foreign Key [User] )
+price: STR
+status: STR [ avail | sold ]
+posted_on: DATETIME
+
+
+### Transaction
+id: STR
+product_id: STR ( Foreign Key [Product] )
+units: INT
+timestamp: DATETIME
+seller_id: STR ( Foreign Key [User] )
+buyer_id: STR ( Foreign Key [User] )
+amount: FLOAT (Derived [ product_id.price*units ])
