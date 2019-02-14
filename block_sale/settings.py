@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'products.apps.ProductsConfig',
     'pages.apps.PagesConfig',
     'users.apps.UsersConfig',
     'django.contrib.admin',
@@ -128,5 +129,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'block_sale/static')
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = (
+    os.path.join(BASE_DIR, 'media')
+)
 MEDIA_URL = '/media/'
