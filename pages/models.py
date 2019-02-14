@@ -24,20 +24,20 @@ def upload_image_path(instance, filename):
             final_filename=final_filename
             )
 '''
-# Create your models here.
-class Product(models.Model):
-	product_id = models.AutoField(primary_key=True)
-	product_name = models.CharField(max_length=120)
-	posted_by = models.ForeignKey(User, unique=True)
-	price = models.DecimalField(decimal_places=2, max_digits=20, default=10)
-	# image = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
-	status = models.BooleanField(default=False)
-	posted_on = models.DateTimeField('date published', default=datetime.now)
-	def __str__(self):
-	    return self.product_name
+# # Create your models here.
+# class Product(models.Model):
+# 	product_id = models.AutoField(primary_key=True)
+# 	product_name = models.CharField(max_length=120)
+# 	posted_by = models.ForeignKey(User, unique=True)
+# 	price = models.DecimalField(decimal_places=2, max_digits=20, default=10)
+# 	# image = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
+# 	status = models.BooleanField(default=False)
+# 	posted_on = models.DateTimeField('date published', default=datetime.now)
+# 	def __str__(self):
+# 	    return self.product_name
 
 
-class Transaction(models.Model):
-	transaction_id = models.AutoField(primary_key=True)
-	product_id = models.ForeignKey(Product, unique=True)
-	timestamp = models.DateTimeField('Date of Transaction', default=datetime.now)
+# class Transaction(models.Model):
+# 	transaction_id = models.AutoField(primary_key=True)
+# 	product_id = models.ForeignKey(Product, unique=True)
+# 	timestamp = models.DateTimeField('Date of Transaction', default=datetime.now)
