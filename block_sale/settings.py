@@ -128,19 +128,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'block_sale/static')
 ]
 
-<<<<<<< HEAD
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-
-||||||| merged common ancestors
-MEDIA_ROOT = (
-    os.path.join(BASE_DIR, 'media')
-)
-MEDIA_URL = '/media/'
-=======
-MEDIA_ROOT = (
-    os.path.join(BASE_DIR, 'media')
-)
-MEDIA_URL = '/media/'
->>>>>>> d681179a345b16b6949836669dec028decff8619
