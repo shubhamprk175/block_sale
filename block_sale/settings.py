@@ -80,11 +80,8 @@ WSGI_APPLICATION = 'block_sale.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'block_sale',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -131,7 +128,19 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'block_sale/static')
 ]
 
+<<<<<<< HEAD
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
+||||||| merged common ancestors
+MEDIA_ROOT = (
+    os.path.join(BASE_DIR, 'media')
+)
+MEDIA_URL = '/media/'
+=======
+MEDIA_ROOT = (
+    os.path.join(BASE_DIR, 'media')
+)
+MEDIA_URL = '/media/'
+>>>>>>> d681179a345b16b6949836669dec028decff8619
