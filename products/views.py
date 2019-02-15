@@ -4,7 +4,7 @@ from .models import Product
 
 # Create your views here.
 def products(request):
-    products = Product.objects.order_by('-posted_on').filter(status=True)
+    products = Product.objects.order_by('-posted_on')
     context = {
         'products': products
     }
