@@ -11,4 +11,5 @@ def products(request):
     return render(request, 'products/products.html', context)
 
 def product(request, product_id):
+    
     return render(request, 'products/product.html')
