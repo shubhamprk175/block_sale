@@ -6,6 +6,7 @@ from users.models import User
 # Create your models here.
 class Product(models.Model):
 	product_name = models.CharField(max_length=120)
+	description = models.TextField(blank=True)
 	posted_by = models.ForeignKey(User, on_delete=models.DO_NOTHING)
 	price = models.DecimalField(decimal_places=2, max_digits=20, default=10)
 	image = models.ImageField(upload_to='photos/%Y/%m/%d', null=True, blank=True)
@@ -14,4 +15,3 @@ class Product(models.Model):
 
 	def __str__(self):
 	    return self.product_name
-

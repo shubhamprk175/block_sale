@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card card-outline-secondary my-4">
+  <div class="card-header">
+    Order Confirmation
+  </div>
+  <div class="card-body">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">Order Id</th>
+            <td>12345</td>
+          </tr>
+          <tr>
+            <th scope="row">Product Name</th>
+            <td>{{product.product_name}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Product Price</th>
+            <td>$ {{product.price}}</td>
+          </tr>
+        </tbody>
+  </table>
+    <a href="{% url 'completed_tr'%}" class="btn btn-success">Confirm Your Order</a>
+    <a href="#" class="btn btn-danger">Cancel Order</a>
+  </div>
+</div>
+{% endblock content %}
