@@ -3,7 +3,6 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,logout, authenticate
 from django.contrib import messages
 from .forms import RegisterForm
-from django.utils import timezone
 
 # Create your views here.
 '''
@@ -15,8 +14,7 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            username = form.cleaned_data.get('user_name')
-            user.last_login = timezone.now()
+            username = form.cleaned_data.get('username')
             login(request, user)
             return redirect("index")
         else:

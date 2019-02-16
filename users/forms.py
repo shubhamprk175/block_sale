@@ -1,12 +1,13 @@
 from django import forms
 from .models import User
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 
-class RegisterForm(forms.ModelForm):
+class RegisterForm(UserCreationForm):
 
-    class Meta:
+    class Meta(UserCreationForm):
         model = User
-        fields = ("user_name", "first_name", "last_name", "email", "password", "balance", "image")
+        fields = ("username", "first_name", "last_name", "email", "balance", "image")
 
     def save(self, commit=True):
         # Save the provided password in hashed format
