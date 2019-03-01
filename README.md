@@ -1,4 +1,4 @@
-#Block Sale - Place u find best of PubG GUNS
+Block Sale - Place u find best of PubG GUNS
 
 Market place using Block Chain technology
 
