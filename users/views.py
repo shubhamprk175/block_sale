@@ -16,12 +16,14 @@ def register(request):
             user = form.save()
             username = form.cleaned_data.get('username')
             login(request, user)
+            print("You are now registered")
             return redirect("index")
         else:
             return render(request, "pages/register.html",
                             context={"form":form})
-
-    form = RegisterForm
+        print(username)
+    print("You are not registered")
+    form = RegisterForm()
     return render(request,
                     "pages/register.html",
                     context={"form":form})
@@ -41,11 +43,13 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"You are now logged in as {username}")
+                print("You are now logged in")
                 return redirect("index")
             else:
                 messages.error(request, "Invalid username or password")
         else:
             messages.error(request, "Invalid username or password")
+            print("Invalid username or password")
 
     form = AuthenticationForm()
     return render(request,
