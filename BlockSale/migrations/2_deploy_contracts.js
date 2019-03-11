@@ -1,5 +1,5 @@
-var BlockSale = artifacts.require("./BlockSale.sol");
+const BlockSale = artifacts.require("./BlockSale.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(BlockSale);
+	deployer.deploy(BlockSale);
 };
