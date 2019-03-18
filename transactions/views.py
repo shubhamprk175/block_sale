@@ -11,6 +11,6 @@ def confirm(request, product_id):
     }
     return render( request, 'transactions/confirm.html', context)
 
-def completed(request):
+def completed(request, product_id):
     
     return render( request, 'transactions/completed.html')
