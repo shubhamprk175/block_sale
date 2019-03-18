@@ -7,5 +7,6 @@ from . import views
 
 urlpatterns = [
     path('<int:product_id>', views.confirm, name='confirm_tr'),
-    path('<int:product_id>', views.completed, name='completed_tr'),
+    path('', views.completed, name='completed_tr'),
+
 ]
