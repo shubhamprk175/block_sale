@@ -3,6 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,logout, authenticate
 from django.contrib import messages
 from .forms import RegisterForm
+from users.models import User
 
 # Create your views here.
 '''
@@ -10,23 +11,38 @@ def user(request, user_id):
     return render(request, 'user.html', name="user")
 '''
 def register(request):
-    if request.method == "POST":
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            username = form.cleaned_data.get('username')
-            login(request, user)
-            print("You are now registered")
-            return redirect("index")
+    if request.method == 'POST':
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        password2 = request.POST['c_password']
+        balance = request.POST['balance']
+        image = request.POST['image']
+
+        # Check Passwords
+        if password == password2:
+            if User.objects.filter(username=username).exists():
+                messages.error(request, "Username already taken")
+                return redirect('register')
+            else:
+                # Check Email
+                if User.objects.filter(email=email).exists():
+                    messages.error(request, "Email already being used")
+                    return redirect('register')
+                else:
+                    user = User.objects.create_user(username=username, email=email, password=password,
+                    first_name=first_name, last_name=last_name, balance=balance, image=image)
+                    user.save()
+                    messages.success(request, "You're successfully registered and can log in")
+                    print("You are not registered")
+                    return redirect('login')
         else:
-            return render(request, "pages/register.html",
-                            context={"form":form})
-        print(username)
-    print("You are not registered")
-    form = RegisterForm()
-    return render(request,
-                    "pages/register.html",
-                    context={"form":form})
+            messages.error(request, "Passwords do not match")
+            return redirect('register')
+    else:
+        return render(request, 'pages/register.html')
 
 def logout_request(request):
     logout(request)
