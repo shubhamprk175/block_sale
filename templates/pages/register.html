@@ -1,12 +1,71 @@
 {% extends "base.html" %}
 
+
 {% block content %}
-	<form method="POST">
-		{% csrf_token %}
-		{{form.as_p}}
-		<br>
-		<button class = "btn" style="background-color:red; color: black" type="submit"> Submit</button>
-	</form>>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Register</h5>
+            <form class="form-signin" id="login-form" method="post" action="{% url 'register' %}">
+                {% csrf_token %}
+              <div class="form-label-group">
+                <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required autofocus>
+                <label for="Username">Username</label>
+              </div>
+
+			  <div class="form-label-group">
+			    <input type="text" id="inputFirstname" class="form-control" placeholder="First Name" name="firstname" required>
+			    <label for="inputFirstname">First Name</label>
+			  </div>
+
+			  <div class="form-label-group">
+			    <input type="text" id="inputLastname" class="form-control" placeholder="Last Name" name="lastname" required>
+			    <label for="inputLastname">Last Name</label>
+			  </div>
+
+			  <div class="form-label-group">
+			    <input type="email" id="inputEmail" class="form-control" placeholder="Email" name="email" required>
+			    <label for="inputEmail">Email</label>
+			  </div>
+
+			  <div class="form-label-group">
+			    <input type="number" id="inputBalance" class="form-control" placeholder="Balance" name="balance" required>
+			    <label for="inputBalance">Balance</label>
+			  </div>
+
+              <div class="form-label-group">
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+                <label for="inputPassword">Password</label>
+              </div>
+
+			  <div class="form-label-group">
+                <input type="password" id="inputPassword" class="form-control" placeholder="Confirm Password" name="c_password" required>
+                <label for="inputPassword">Confirm Password</label>
+              </div>
+
+			  <label class="btn btn-secondary" for="my-file-selector">
+				    <input id="my-file-selector" name="profile_photo" type="file" style="display:none"
+				    onchange="$('#upload-file-info').html(this.files[0].name)">
+				    Upload Photo
+			</label>
+			<span class='label label-info' id="upload-file-info"></span>
+
+              {% if form.errors %}
+                  <p class="label label-danger">
+                      Your username and password didn't match.
+                      Please try again.
+                  </p>
+              {% endif %}
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+              <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 	If you already have a account, <a href="{% url 'login' %}">Login</a> instead.
 {% endblock %}
