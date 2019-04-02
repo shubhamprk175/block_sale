@@ -1,11 +1,62 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method="POST">
-  {% csrf_token %}
-  {{form.as_p}}
-  <br>
-  <button class = "btn" style="background-color:red; color: black" type="submit"> Save</button>
-</form>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center">Add Product</h5>
+          <form class="form-signin" id="login-form" method="post">
+              {% csrf_token %}
+            <div class="form-label-group">
+              <input type="text" id="inputProductName" class="form-control" placeholder="ProductName" name="product_name" required autofocus>
+              <label for="inputProductName">Product Name</label>
+            </div>
+
+            <div class="form-label-group">
+              <input type="textarea" id="inputDescription" class="form-control" placeholder="Description" name="description" required>
+              <label for="inputDescription">Description</label>
+            </div>
+
+            <div class="form-label-group">
+              <input type="number" id="inputPrice" class="form-control" placeholder="Price" name="price" required>
+              <label for="inputPrice">Price</label>
+            </div>
+
+            <div class="form-check">
+              <input type="checkbox" id="inputStatus" class="form-check-input" placeholder="Status" name="status" required>
+              <label class="form-check-label" for="inputStatus">Status</label>
+            </div>
+            <br>
+            <div class="form-label-group">
+              <input type="date" id="inputPostedOn" class="form-control" placeholder="PostedOn" name="posted_on">
+              <label for="inputPostedOn">Posted On</label>
+            </div>
+
+            <label class="btn btn-secondary" for="my-file-selector">
+    				    <input id="my-file-selector" name="image" type="file" style="display:none"
+    				    onchange="$('#upload-file-info').html(this.files[0].name)" />
+    				    Upload Photo
+    			  </label>
+    			<span class='label label-info' id="upload-file-info"></span>
+
+                  {% if form.errors %}
+                      <p class="label label-danger">
+                          Please try again.
+                      </p>
+                  {% endif %}
+                  <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+                  <input type="hidden" name="next" value="{{ next }}" />
+                  <input type="hidden" name="posted_by" value="{{user.id}}">
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 {% endblock content %}

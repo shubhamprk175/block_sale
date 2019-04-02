@@ -12,7 +12,7 @@
                 {% csrf_token %}
               <div class="form-label-group">
                 <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required autofocus>
-                <label for="Username">Username</label>
+                <label for="inputUsername">Username</label>
               </div>
 
 			  <div class="form-label-group">
@@ -43,13 +43,13 @@
 			  <div class="form-label-group">
                 <input type="password" id="inputPassword" class="form-control" placeholder="Confirm Password" name="c_password" required>
                 <label for="inputPassword">Confirm Password</label>
-              </div>
+        </div>
 
 			  <label class="btn btn-secondary" for="my-file-selector">
 				    <input id="my-file-selector" name="image" type="file" style="display:none"
 				    onchange="$('#upload-file-info').html(this.files[0].name)">
 				    Upload Photo
-			</label>
+			  </label>
 			<span class='label label-info' id="upload-file-info"></span>
 
               {% if form.errors %}
