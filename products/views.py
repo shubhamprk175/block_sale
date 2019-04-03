@@ -24,18 +24,18 @@ def product(request, product_id):
 def addproduct(request):
     if request.method == "POST":
         # print(request.POST['image'])
-        form = ProductForm(request.POST)
+        form = ProductForm(request.POST, request.FILES)
         # form['image'] = request.POST['image']
         if form.is_valid():
-            product_item = form.save(commit=False)
-            product_photo = request.FILES['image']
-            print(product_photo.name)
-            print(product_photo.size)
-            d = datetime.date.today()
-            directory = f"photos/{d.year}/{d:%m}/{d:%d}/"
-            product_item.image = directory + product_photo.name
-            fs = FileSystemStorage()
-            fs.save(directory + product_photo.name, product_photo)
+            product_item = form.save()
+            # product_photo = request.FILES['image']
+            # print(product_photo.name)
+            # print(product_photo.size)
+            # d = datetime.date.today()
+            # directory = f"photos/{d.year}/{d:%m}/{d:%d}/"
+            # product_item.image = directory + product_photo.name
+            # fs = FileSystemStorage()
+            # fs.save(directory + product_photo.name, product_photo)
             product_item.save()
             # print(form.cleaned_data)
     else:
