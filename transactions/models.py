@@ -13,4 +13,4 @@ class Transaction(models.Model):
     date_of_txn = models.DateTimeField(default=datetime.now, blank=True)
 
     def __str__(self):
-        return self.id
+        return self.product_name

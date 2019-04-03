@@ -6,13 +6,14 @@ from .models import Transaction
 
 # Create your views here.
 def confirm(request, product_id):
+    print("you bro")
     product = get_object_or_404(Product, pk=product_id)
     print(product)
     context = {
         'product': product
     }
     request.session['product_id'] = product.id
-    return render( request, 'transactions/confirm.html', context)
+    return render( request, 'transactions/confirm.html', context )
 
 def completed(request):
     if 'product_id' in request.session:
@@ -21,7 +22,7 @@ def completed(request):
         print(product, "foo")
         if request.user.is_authenticated:
             user_id = request.user.id
-        txn = Transaction(product_name=product.product_name, buyer=user_id, amount=product.price)
+        txn = Transaction(product_name=product.product_name, buyer=user_id, amount=product.price, seller=product.posted_by)
         txn.save()
-        
+
     return render( request, 'transactions/completed.html')
