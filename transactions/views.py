@@ -22,7 +22,12 @@ def completed(request):
         print(product, "foo")
         if request.user.is_authenticated:
             user_id = request.user.id
-        txn = Transaction(product_name=product.product_name, buyer=user_id, amount=product.price, seller=product.posted_by)
+        txn = Transaction(product_name=product.product_name, buyer=request.user.username, amount=product.price, seller=product.posted_by)
         txn.save()
+
+        t = Product.objects.get(id=product_id)
+        t.status = False
+        t.posted_by = request.user
+        t.save() # this will update only        
 
     return render( request, 'transactions/completed.html')
