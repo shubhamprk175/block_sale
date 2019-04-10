@@ -1,4 +1,4 @@
-Block Sale - Place u find best of PubG GUNS
+Block Sale - Imaginary market-place for selling and buying PUBG guns
 
 Market place using Block Chain technology
 
